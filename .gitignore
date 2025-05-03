@@ -1,0 +1,8 @@
+# Ignore all pickle files
+*.pkl
+
+# Ignore all log files
+*.log
+
+# Ignore all rosbag files
+*.bag

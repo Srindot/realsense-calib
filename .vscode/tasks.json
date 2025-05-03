@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Launch Camera",
+            "type": "shell",
+            "command": "roslaunch realsense2_camera rs_camera.launch",
+            "problemMatcher": []
+        },
+        {
+            "label": "Record Rosbag",
+            "type": "shell",
+            "command": "cd /home/container_uesr/workspace/ && rosbag record -O calibration_data.bag /camera/color/image_raw /camera/depth/image_rect_raw",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Calibration",
+            "type": "shell",
+            "command": "cd ~/catkin_ws/ && source devel/setup.bash && source devel/setup.bash && rosrun kalibr tartan_calibrate --bag /home/container_user/workspace/calibration_data.bag --target /home/container_user/workspace/aprilgrid.yaml --topics /camera/color/image_raw --min-init-corners-autocomplete 29 --min-tag-size-autocomplete 2 --correction-threshold 10.1 --models pinhole-radtan  --dont-show-report --save_dir /home/container_user/workspace",
+            "problemMatcher": []
+        }
+    ]
+}
